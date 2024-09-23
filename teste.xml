@@ -1,0 +1,11 @@
+<Configuration>
+    <Remove>
+        <Product ID="O365ProPlusRetail">
+            <Language ID="pt-br"/>
+        </Product>
+        <Product ID="VisioProRetail">
+            <Language ID="pt-br"/>
+        </Product>
+    </Remove>
+    <Display Level="None" AcceptEULA="TRUE" />
+</Configuration>

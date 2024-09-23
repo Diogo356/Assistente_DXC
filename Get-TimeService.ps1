@@ -1,0 +1,1 @@
+Start-Process -FilePath "C:\Program Files\Microsoft Office\root\Office16\OfficeSetup.exe" -ArgumentList "/configure C:\Users\Bruna\testes\projetos\teste.xml" -Wait

@@ -44,7 +44,7 @@ cls
     ) else if %options%== 3 (
         call :domain_add
     ) else if %options%== 4 (
-        call :backup_tes
+        call :get_rem_add
     ) else if %options%== 9 (
         powershell -command "Write-Host 'Voce escolheu encerrar o sistema, Ate mais.... ' -ForeGroundColor White"
         timeout /t 4 > nul
@@ -58,14 +58,9 @@ cls
     goto :menu
 :fim
 
-
-@REM Subs Rotinas, aqui é onde crio minhas funções a serem executadas, ao decorrer do código
-
-
-@REM sub rotina que funciona para mover a pasta common do caminho da rede para o caminho do SAP LOGON
 :move_common
-    set path_dest=C:\blu\
-    set "path_src=C:\Users\%USERNAME%\testes\projetos"
+    set "path_dest=\\achebr\gru\TI\ServiceDesk\"
+    set "path_src=C:\Users\%USERNAME%\AppData\Roaming\Sap\"
     set file_path=Common
 
     for /d %%i in ("%path_src%\*") do (
@@ -83,7 +78,6 @@ cls
     call :menu
 :fim
 
-@REM sub rotina para limpar o %temp% que fica armazenado em C:\Users\%USERNAME%\AppData\Local\Temp
 :clean_temp
     set path_src_temp=C:\Users\%USERNAME%\AppData\Local\Temp
 
@@ -95,8 +89,6 @@ cls
     )
     call :clean_temp2
 :fim
-
-@REM Sub rotina para limpar o temp armazenado no caminho C:\Windows\Temp
 
 :clean_temp2
     set path_src_temp2=C:\Windows\Temp
@@ -113,54 +105,51 @@ cls
     call:menu
 :fim
 
-@REM aqui vai ser uma sub rotina que irá remover a maquina do dominio
-:domain_remove
-    echo Nome do computador: %COMPUTERNAME%
-    timeout /t 6 > nul
+:get_rem_add
+
+    powershell -command "Write-Host '      [1]' -ForeGroundColor White -NoNewLine"
+    powershell -command "Write-Host ' ADICIONAR NO DOMINIO' -ForeGroundColor Magenta"
+    powershell -command "Write-Host '      [2]' -ForeGroundColor White -NoNewLine"
+    powershell -command "Write-Host ' REMOVER DO DOMINIO'`n`n`n -ForeGroundColor Magenta"
+    powershell -command "Write-host '      [9]' -ForeGround White -NoNewLine"
+    powershell -command "Write-host ' SAIR' -ForeGround White"
+
+    set /p "value=Escolha uma das opções acima: "
+    if %value%== 1 (
+        call :domain_add
+    ) else if %value%== 2 (
+        call :domain_remove
+    ) else if %value%== 9 (
+        echo Voltando para o menu ...
+    ) else (
+        echo "ERROR: Opcao invalida, Tente uma das opções listadas acima."
+        cls
+        timeout /t 4 > nul
+        goto :get_rem_add
+    )
     cls
+    timeout /t 4 > nul
+    goto :menu
+:fim
+
+:domain_remove
+    set "path_remove=%~dp0"
+    powershell.exe -ExecutionPolicy Bypass -File "%path_remove%\extras\domain_remove.ps1"
+    cls
+    goto :menu
 :fim
 
 
 :domain_add
-    set my_domain=achebr.int
-    set adm=abcd
-    set senha=abcd12345
-
-    @REM usando esse netdom eu consigo acessar os serviços de diminio da maquina para então dar o comando join e adc todos os outros parametros inseridos 
-    netdom join %COMPUTERNAME%  /domain:%my_domain% /userd:%adm% /passwordd:%senha%
-    cls
-    @REM faço a verificação de erros, aqui é caso de tudo certo no adição do dominio
-    @REM No else é caso a adição no dominio de problemas, logo ele da uma descrição da possivel causa e da opções de tentar novamente, ou voltar para o menu de opções
-    if %errorlevel% == 0 (
-        powershell -command "Write-HOST 'MAQUINA ADICIONADA NO DOMINIO ACHEBR.INT' -ForegroundColor Green"
-        powershell -command "Write-HOST 'AGUARDE...' -ForgegroundColor Green"
-        powershell -command "Write-HOST 'A MAQUINA SERA REINICIADA EM 1 MIN ... ' -ForegroundColor Green"
-        shutdown /r /t 60
-    ) else (
-        powershell -command "Write-Host 'ERROR: A MAQUINA NAO CONSEGUIU SE CONECTAR NO DOMINIO' -ForegroundColor RED"
-        powershell -command "Write-Host 'VERIFIQUE SE A MAQUINA AINDA ESTA NO AD (ACTIVE DIRECTORY): %COMPUTERNAME%' -ForegroundColor RED"
-        powershell -command "Write-Host 'CASO NAO ESTEJA, AGUARDE UM MOMENTO E TENTE NOVAMENTE'`n`n`n -ForeGroundColor RED"
-        powershell -command "Write-Host 'MOTIVOS QUE OCORREM ESSE ERRO: ' -ForeGroundColor RED"
-        powershell -command "Write-Host 'AS VEZES O AD AINDA NAO DESASOCIOU A MAQUINA DO DOMINIO. QUANDO ISSO ACONTECE, VOCE DEVE AGUARDAR UM PERIODO PARA TENTAR ATRELAR A MAQUINA NOVAMENTE O DOMINIO. LEVANDO UM PERIODO DE 10min a 1hr' -ForegroundColor RED"
-        timeout /t 4 > nul
-        choice /C ABC /m "gostaria de tentar novamente?"
-        echo valor do : %errorlevel%
-        if %errorlevel% == 1 (
-            goto :domain_add
-        ) else (
-            timeout /t 4 > nul
-            cls
-            call :menu
-        )
-    )
-    timeout /t 4 > nul
+    set "path_add=%~dp0"
+    powershell.exe -ExecutionPolicy Bypass -File "%path_add%\extras\domain_add.ps1"
     cls
     call :menu
 :fim
 
 :backup_tes
     set scriptPath=%~dp0
-    powershell.exe -ExecutionPolicy Bypass -File "%scriptPath%\backup.ps1"
+    powershell.exe -ExecutionPolicy Bypass -File "%scriptPath%\extras\backup.ps1"
     pause
     cls
    

@@ -51,6 +51,12 @@ if ($options.ContainsKey([int]$choice)) {
     $selectedDir = $options[[int]$choice]
     $destinationDir = Join-Path -Path $destinationPath -ChildPath (Get-Item $selectedDir).Name
 
+    # Verifica se o caminho selecionado existe
+    if (-not (Test-Path -Path $selectedDir)) {
+        Write-Host "Erro: O caminho '$selectedDir' não existe."
+        exit
+    }
+
     # Cria o diretório de destino se não existir
     if (-not (Test-Path -Path $destinationDir)) {
         New-Item -ItemType Directory -Path $destinationDir
@@ -63,7 +69,7 @@ if ($options.ContainsKey([int]$choice)) {
         # Verifica se não está tentando copiar para o mesmo local
         if ($_.FullName -ne $subDirDestination) {
             Copy-Item -Path $_.FullName -Destination $subDirDestination -Recurse -Force
-            Write-Host "Conteudo de '$($_.FullName)' copiado para '$subDirDestination'."
+            Write-Host "Conteúdo de '$($_.FullName)' copiado para '$subDirDestination'."
         } else {
             Write-Host "Ignorando tentativa de copiar '$($_.FullName)' para si mesmo."
         }

@@ -108,7 +108,7 @@ cls
     for %%i in ("%path_src_temp2%\*") do (
         del /q "%%i"
     )
-    timeout /t 3 > nul
+    timeout /t 3 > nulc
     cls
     call:menu
 :fim

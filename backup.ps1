@@ -1,12 +1,14 @@
 # Defina o caminho de origem e o caminho de destino
 $sourcePath = "C:\Users\*"  # Altere para o diretório que você deseja listar
-$destinationPath = "C:\blu\"  # Altere para o local onde deseja copiar
-$ignoreFilePath = "C:\Users\Bruna\testes\projetos\ignore.txt"
-$ignore_list = Get-Content -Path $ignoreFilePath
+$destinationPath = "\\achebr\gru\TI\ServiceDesk\Fazendo_testes"  # Altere para o local onde deseja copiar
+$ignoreFilePath = $PSScriptRoot
+$fileName = "ignore.txt"
+$fullName = Join-Path -Path $ignoreFilePath -ChildPath $fileName
+$ignore_list = Get-Content -Path $fullName
 
 # Verifica se o diretório de destino existe, se não, cria
 if (-not (Test-Path -Path $destinationPath)) {
-    New-Item -ItemType Directory -Path $destinationPath
+    Write-Host "Diretorio escolhido nao encontrado"
 }
 
 # Obtém todos os diretórios em $sourcePath, ignorando os listados em $ignore_list

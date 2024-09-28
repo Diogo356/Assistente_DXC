@@ -1,0 +1,32 @@
+Public
+Público
+Administrador
+Administrador
+testes
+teste
+suporte
+Suporte
+Default
+user
+ja
+oi
+.vscode
+AppData
+Contatos
+Favoritos
+Jogos Salvos
+Lhasa Limited
+Links
+Objetos 3D
+Pesquisas
+Roaming
+teste02
+NTUSER.DAT
+.azure
+.aws
+.docker
+Favorites
+Saved Games
+Searches
+Desktop
+3D Objects

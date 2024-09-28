@@ -42,9 +42,9 @@ cls
     ) else if %options%== 2 (
         call :move_common
     ) else if %options%== 3 (
-        call :domain_add
-    ) else if %options%== 4 (
         call :get_rem_add
+    ) else if %options%== 4 (
+        call :backup_tes
     ) else if %options%== 9 (
         powershell -command "Write-Host 'Voce escolheu encerrar o sistema, Ate mais.... ' -ForeGroundColor White"
         timeout /t 4 > nul
@@ -106,7 +106,7 @@ cls
 :fim
 
 :get_rem_add
-
+    cls
     powershell -command "Write-Host '      [1]' -ForeGroundColor White -NoNewLine"
     powershell -command "Write-Host ' ADICIONAR NO DOMINIO' -ForeGroundColor Magenta"
     powershell -command "Write-Host '      [2]' -ForeGroundColor White -NoNewLine"
@@ -136,6 +136,7 @@ cls
     set "path_remove=%~dp0"
     powershell.exe -ExecutionPolicy Bypass -File "%path_remove%\extras\domain_remove.ps1"
     cls
+    timeout /t 4 > nul
     goto :menu
 :fim
 
@@ -144,7 +145,8 @@ cls
     set "path_add=%~dp0"
     powershell.exe -ExecutionPolicy Bypass -File "%path_add%\extras\domain_add.ps1"
     cls
-    call :menu
+    timeout /t 4 > nul
+    goto :menu
 :fim
 
 :backup_tes

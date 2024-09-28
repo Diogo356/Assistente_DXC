@@ -159,8 +159,8 @@ cls
 :fim
 
 :backup_tes
-    set "scriptPath=C:\Users\%USERNAME%\testes\projetos\backup.ps1"
-    powershell.exe -ExecutionPolicy Bypass -File "%scriptPath%"
+    set scriptPath=%~dp0
+    powershell.exe -ExecutionPolicy Bypass -File "%scriptPath%\backup.ps1"
     pause
     cls
    

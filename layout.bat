@@ -9,14 +9,29 @@ if %errorlevel% NEQ 0 (
     powershell -Command "Start-Process '%~f0' -Verb RunAs"
     exit /b
 )
-
 cls
+powershell -command "Write-Host '      ================================================================'`n -ForegroundColor White"
+powershell -Command "Write-Host '        GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG' -ForeGroundColor Magenta"
+powershell -Command "Write-Host '        GGGGPYYYYYYY55PGGGGG5YYYYPGGGGGGGGG5YYYYPGGGGP55YYYYYYY5GGGG' -ForeGroundColor Magenta"
+powershell -Command "Write-Host '        GGGG5         .:~JPGY~   :JGGGGGG5~   .?GGY7~.         ?GGGG' -ForeGroundColor Magenta"
+powershell -Command "Write-Host '        GGGGP????????~:   .7GGJ:   ~YGGP7.   ?PBY~   .~~???????JGGGG' -ForeGroundColor Magenta"
+powershell -Command "Write-Host '        GGGGGGGGGGGGGGPY~   :PGP7.   ??:   ~5GG7   .?PGGGGGGGGGGGGGG' -ForeGroundColor Magenta"
+powershell -Command "Write-Host '        GGGGGGGGGGGGGGGGG????YGGG5?.     ~JGGGP????5GGGGGGGGGGGGGGGG' -ForeGroundColor Magenta"
+powershell -Command "Write-Host '        GGGGGGGGGGGGGGGGGPPPPPGGGB5:     ?GGGGPPPPPGGGGGGGGGGGGGGGGG' -ForeGroundColor Magenta"
+powershell -Command "Write-Host '        GGGGGGGGGGGGGGGGY:   JGGP7.  .:   ~YGGP~ ..7GGGGGGGGGGGGGGGG' -ForeGroundColor Magenta"
+powershell -Command "Write-Host '        GGGGG55555555Y?~   .?GG?.   ~5P7.   ~5B5~   :7Y55555555PGGGG' -ForeGroundColor Magenta"
+powershell -Command "Write-Host '        GGGG5            :7PGJ:   :JGGGG5?    7PGJ~.           ?GGGG' -ForeGroundColor Magenta"
+powershell -Command "Write-Host '        GGGG5~~~~~~~~~7J5PGGJ~~~~?GGGGGGGGY~~~~?PGGPJ7?~~~~~~~~?GGGG' -ForeGroundColor Magenta"
+powershell -Command "Write-Host '        GGGGGGGGGGGGGGBBGGGGGGGGGBGGGGGGGGGGGGGGGGGGBGGGGGGGGGGGGGGG'`n -ForeGroundColor Magenta"
+powershell -command "Write-Host '      ================================================================'`n -ForegroundColor White"
+timeout /t 4 > nul
+cls
+
+
 powershell -command "Write-Host '                SEJA BEM VINDO A FERRAMENTA ASSISTENTE DA DXC.'`n -ForegroundColor Green"
 powershell -command "Write-Host '      AQUI VOCE IRA ENCONTRAR DIVERSAS SOLUCOES PARA CORRIGIR ANGUNS SOFTWARES.'`n -ForegroundColor Red"
 powershell -command "Write-Host '                CONTINUE PARA VER AS SOLUCOES DISPONIVEIS.'`n`n`n -ForegroundColor DarkBlue"
-
 powershell -command "Write-Host '      Se quiser adiantar, pode apertar o enter para continuar...' -Foregroundcolor White "
-
 timeout /t 10 > nul
 cls
 
@@ -114,7 +129,7 @@ cls
     powershell -command "Write-host '      [9]' -ForeGround White -NoNewLine"
     powershell -command "Write-host ' SAIR' -ForeGround White"
 
-    set /p "value=Escolha uma das opções acima: "
+    set /p "value=Escolha uma das opcoes acima: "
     if %value%== 1 (
         call :domain_add
     ) else if %value%== 2 (
@@ -122,7 +137,7 @@ cls
     ) else if %value%== 9 (
         echo Voltando para o menu ...
     ) else (
-        echo "ERROR: Opcao invalida, Tente uma das opções listadas acima."
+        echo "ERROR: Opcao invalida, Tente uma das opcoes listadas acima."
         cls
         timeout /t 4 > nul
         goto :get_rem_add

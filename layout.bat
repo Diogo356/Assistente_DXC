@@ -90,7 +90,6 @@ cls
     )
     timeout /t 4 > nul
     cls
-    call :menu
 :fim
 
 :clean_temp
@@ -117,7 +116,6 @@ cls
     )
     timeout /t 3 > nulc
     cls
-    call:menu
 :fim
 
 :get_rem_add
@@ -144,7 +142,6 @@ cls
     )
     cls
     timeout /t 4 > nul
-    goto :menu
 :fim
 
 :domain_remove
@@ -152,7 +149,6 @@ cls
     powershell.exe -ExecutionPolicy Bypass -File "%path_remove%\extras\domain_remove.ps1"
     cls
     timeout /t 4 > nul
-    goto :menu
 :fim
 
 
@@ -161,7 +157,6 @@ cls
     powershell.exe -ExecutionPolicy Bypass -File "%path_add%\extras\domain_add.ps1"
     cls
     timeout /t 4 > nul
-    goto :menu
 :fim
 
 :backup_tes
@@ -169,8 +164,6 @@ cls
     powershell.exe -ExecutionPolicy Bypass -File "%scriptPath%\extras\backup.ps1"
     pause
     cls
-   
-    goto :menu
 :fim
 
 pause

@@ -40,7 +40,7 @@ cls
     powershell -command "Write-Host '                      MENU DE OPCOES DA FERRAMENTA'`n -ForegroundColor White"
     powershell -command "Write-Host '       ================================================================'`n -ForegroundColor DarkBlue"
     powershell -command "Write-Host '      [1]' -ForegroundColor White -NoNewLine"
-    powershell -command "Write-Host ' LIMPAR OS TEMPORARIOS (AQUI LIMPA OS DOIS)'`n -ForegroundColor Magenta"
+    powershell -command "Write-Host ' LIMPAR OS TEMPORARIOS (AQUI LIMPA OS DOIS)'`n -BackgroundColor Magenta"
     powershell -command "Write-Host '      [2]' -ForegroundColor White -NoNewLine"
     powershell -command "Write-Host ' MOVER O COMMON PARA A PASTA DO SAP LOGON'`n -ForegroundColor Magenta"
     powershell -command "Write-Host '      [3]' -ForegroundColor White -NoNewLine"
@@ -90,6 +90,7 @@ cls
     )
     timeout /t 4 > nul
     cls
+    goto :menu
 :fim
 
 :clean_temp
@@ -116,6 +117,7 @@ cls
     )
     timeout /t 3 > nulc
     cls
+    goto :menu
 :fim
 
 :get_rem_add
@@ -149,6 +151,7 @@ cls
     powershell.exe -ExecutionPolicy Bypass -File "%path_remove%\extras\domain_remove.ps1"
     cls
     timeout /t 4 > nul
+    goto :menu
 :fim
 
 
@@ -157,6 +160,7 @@ cls
     powershell.exe -ExecutionPolicy Bypass -File "%path_add%\extras\domain_add.ps1"
     cls
     timeout /t 4 > nul
+    goto :menu
 :fim
 
 :backup_tes
@@ -164,6 +168,7 @@ cls
     powershell.exe -ExecutionPolicy Bypass -File "%scriptPath%\extras\backup.ps1"
     pause
     cls
+    goto :menu
 :fim
 
 pause

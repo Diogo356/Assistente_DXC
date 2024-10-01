@@ -8,7 +8,7 @@ Bom, logo no começo ao executar, ele solicitará ao analista a executar a ferra
 o proprio analista, tenha liberdade total de executar comando que o façam toda hora executar como Adm. Como a ferramenta
 já estará sendo executada como adm, não haverá nessecidade de ficar toda hora digitando senhas e senhas de adm.
 
-Opçõe disponiveis no menu até o momento:
+<h4>Opções disponiveis no menu até o momento:</h4>
 
 [1] - Limpar temporarios:
 
@@ -26,6 +26,6 @@ Essa opção é em casos de você pegar a maquina fora do dominio e será necess
 
 Essa opção foi a mais dificil de fazer e foi ela que me fez e ta me fazendo migrar para o powershell hahaha. Bom essa opção ela faz o backup da maquina que está rodando o script, porém, ela não faz extamente direto o backup, por conta de como a ache lida com os perfils, existem maquinas que podem ter diversos perfis conectados em uma só maquina, por conta disso eu usei um metodo de colocar os perfis em uma stack e mostrar ela em opções junto da data de modificação e Tamanho em GB (apesar da opção de tamanho em gb não estar imprimindo corretamente). Assim que ele imprime as opções, você escolhe qual das opções você deseja fazer o backup e ao escolher, ele já cria uma pasta no caminho com o mesmo nome do perfil escolhido, após criar, ele acessa a pasta tanto de dest, quanto source e começa a copiar as as pastas necessarias do backup.
 
-COMO EXECUTAR:
+<h2>Como Executar:</h2>
 
 Você pode baixar a ferramenta com a opção zip(lembre de verificar se a maquina tem a ferramenta zip ou winrar instalado), após baixar, você extrai a pasta no local que deseja armazenar, depois voce acessa a pasta extraida e excuta o arquivo chamado layout.bat. Logo como o seu usuario(tem que ser usuario com permissão de adm), agora é só começar a usar.

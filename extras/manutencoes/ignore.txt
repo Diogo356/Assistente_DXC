@@ -1,6 +1,6 @@
 Public
-Público
-Administrador
+Publico
+administrador
 Administrador
 testes
 teste
@@ -8,8 +8,6 @@ suporte
 Suporte
 Default
 user
-ja
-oi
 .vscode
 AppData
 Contatos
@@ -20,7 +18,6 @@ Links
 Objetos 3D
 Pesquisas
 Roaming
-teste02
 NTUSER.DAT
 .azure
 .aws

@@ -1,0 +1,1 @@
+# "[C:\Users\Bruna\ferramentas_do_trampo\sap\EPM_Add-in_x64.exe]" /S /v "INSTALLDIR=\"C:\Program Files\SAP BusinessObjects\"SETUPPHASE=Install CT_PROFILE=FINANCE CT_LANGUAGES=\"Portuguese\" /l*v \"C:\epmAddin_Install.log\" MSIINSTALLPERUSER=1 EPMLAUNCHER_REGISTRATION=True EPMLAUNCHER_INSTALL_SHORTCUT_EXCEL=True /qn"

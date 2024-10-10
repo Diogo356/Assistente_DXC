@@ -1,5 +1,5 @@
 #RequireAdmin
-Run("D:\testes_para\sap\IBP_Add-in_NET6_x64 2308.exe")
+Run("\\achebr\gru\Software(GRU)\SAP IBP\IBP_Add-in_NET6_x64 2308.exe")
 WinWaitActive("SAP IBP, add-in for Microsoft Excel - InstallShield Wizard", "WARNING: This program is protected by copyright law and international treaties.")
 Send("{ENTER}")
 WinWaitActive("SAP IBP, add-in for Microsoft Excel - InstallShield Wizard","Please enter your information.")

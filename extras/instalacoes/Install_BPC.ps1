@@ -1,21 +1,18 @@
 function install_EPM {
     param (
     )
-
-    $path_epm = "$PSScriptroot\..\instaladores\install_EPM.au3"
+    $path_epm = "$PSScriptroot\..\instaladores\install_EPM.exe"
 
     $verify_bpc = Get-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*" | 
     Where-Object { $_.DisplayName -like "*SAP Analysis For Microsoft Office*" } | 
     Select-Object DisplayName
-
     $verify_epm = Get-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*" | 
     Where-Object { $_.DisplayName -like "*EPM Add-In*" } | 
     Select-Object DisplayName
 
     if(($verify_bpc) -and ($verify_epm)) {
         Write-Host "O BPCNW e o EPM-Add-in Ja está instalado" -ForegroundColor Green
-        Write-Host "Verificando se o EPM já está instalado ..."
-    
+        Start-Process -FilePath "D:\testes_para\sap\BPC_Connections.xlsm"
     } elseif (($verify_bpc) -and -not($verify_epm)) {
         Write-Host "O Bpc já está instalado"
         Write-Host "Instalando o EPM Add-In ..."
@@ -42,6 +39,7 @@ function install_EPM {
         Select-Object DisplayName
         if(($verify_bpc) -and ($verify_epm)) {
             Write-Host "BPC e EPM foram instalados com Sucesso" -ForegroundColor Green
+            Start-Process -FilePath "D:\testes_para\sap\BPC_Connections.xlsm"
         } else {
             Write-Host "ERROR: Desculpa Não conseguimos instalar o BPC ou o EPM Add-In" -ForegroundColor Red
             Write-Host "Verifique o log de erro gerado nos seguintes caminhos $PSScriptRoot\log_instalation_EPM.txt e $PSScriptRoot\log_instalation_BPC.txt" -ForegroundColor DarkCyan
@@ -54,7 +52,7 @@ function install_EPM {
 function install_BPC {
     param (
     )
-    $installerPath = "D:\testes_para\sap\AOFFICE28SP15_0-70004973 64bits Atualizado.exe"
+    $installerPath = "\\achebr\gru\Software(GRU)\SAP BPC\AOFFICE28SP15_0-70004973 64bits Atualizado.exe"
     $verifyVs2010 = install_VS2010
 
     if ($verifyVs2010 -eq 0) {

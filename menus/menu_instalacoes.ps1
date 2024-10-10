@@ -3,6 +3,7 @@ import-Module "$PSScriptRoot\..\extras\instalacoes\install_IBP.ps1"
 Import-Module "$PSScriptRoot\..\extras\instalacoes\install_GKO.ps1"
 Import-Module "$PSScriptRoot\..\extras\instalacoes\install_APDATA.ps1"
 
+
 function menu_instalacoes {
     param (
     )
@@ -21,7 +22,9 @@ function menu_instalacoes {
         Write-Host '      [4]' -ForegroundColor White -NoNewLine
         Write-Host ' Instalar O GKO'`n -ForegroundColor Magenta
         Write-Host '      [5]' -ForegroundColor White -NoNewLine
-        Write-Host ' Think-Cell'`n -ForegroundColor Magenta
+        Write-Host ' Think-Cell'`n`n`n -ForegroundColor Magenta
+        Write-Host '      [9]' -ForegroundColor White -NoNewLine
+        Write-Host ' SAIR'`n -ForegroundColor Magenta
 
         $options = Read-Host "Escolha uma das opcoes acima: "
         if ($options -eq 1) {
@@ -29,9 +32,9 @@ function menu_instalacoes {
         } elseif ($options -eq 2) {
             Write-Host "A opcao escolhida foi a de instalacao do IBP"
         } elseif ($options -eq 3) {
-            Write-Host "A opcao escolhida foi a de instalacao do APDATA"
+            install_apdata
         } elseif ($options -eq 4) {
-            Write-Host "A opcao escolhida foi a de instalacao  do GKO"
+            shortcut_gko
         } elseif ($options -eq 5) {
             Write-Host "A opcao escolhida foi a de instalacao do Think-Cell"
         } elseif ($options -eq 9) {
@@ -42,6 +45,5 @@ function menu_instalacoes {
         }
         Start-Sleep(3)
         Clear-Host
-
     }
 }

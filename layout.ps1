@@ -35,13 +35,13 @@ function main {
         Write-Host '      [1]' -ForegroundColor White -NoNewLine
         Write-Host ' INSTALACOES'`n -ForegroundColor Magenta
         Write-Host '      [2]' -ForegroundColor White -NoNewLine
-        Write-Host ' MANUTENCOES'`n`n`n -ForegroundColor Magenta
+        Write-Host ' MANUTENCOES'`n -ForegroundColor Magenta
         Write-Host '      [3]' -ForegroundColor White -NoNewLine
         Write-Host ' DESINSTALACOES'`n`n`n -ForegroundColor Magenta
         Write-Host '      [9]' -ForegroundColor White -NoNewLine
         Write-Host ' Sair'`n -ForegroundColor Magenta
 
-        $value = Read-Host "Escolha Uma das opcoes acima: "
+        $value = Read-Host "Escolha Uma das opcoes acima"
         if ($value -eq 1){
             Clear-Host
            menu_instalacoes
@@ -55,15 +55,25 @@ function main {
             Write-Host "Opcao escolhida foi a de sair do programa"
             $x = 1
         }else {
-            Write-Host "Opção invalida, tente novamente"
+            Write-Host "Opcao invalida, tente novamente"
         }
         Clear-Host
         Start-Sleep(5)
     }
 }
-
 if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).isInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
     Start-Process powershell -ArgumentList "-File `"$PSCommandPath`"" -Verb RunAs
-    exit
 }
+
+
+$originalBgColor = $Host.UI.RawUI.BackgroundColor
+$originalFgColor = $Host.UI.RawUI.ForegroundColor
+
+$Host.UI.RawUI.BackgroundColor = "Black"
+$Host.UI.RawUI.ForegroundColor = "White"
+
+# aqui eu chamo a minha funçao main:
 main
+
+$Host.UI.RawUI.BackgroundColor = $originalBgColor
+$Host.UI.RawUI.ForegroundColor = $originalFgColor

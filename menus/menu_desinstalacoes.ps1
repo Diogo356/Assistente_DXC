@@ -21,7 +21,7 @@ function menu_desinstalacoes {
             Write-Host "Saindo do menu de Desinstalacoes"
             $x = 1
         } else{
-            Write-Host "ERROR: Opcao invalida, Selecione somente as que estão listadas acima" -ForegroundColor Red
+            Write-Host "ERROR: Opcao invalida, Selecione somente as que estao listadas acima" -ForegroundColor Red
         }
         Start-Sleep(2)
         Clear-Host
